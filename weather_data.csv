@@ -1,0 +1,2 @@
+,city,region,country,latitude,longitude,timezone,localtime,last_updated,temp_c,condition_text,wind_mph,wind_degree,wind_dir,pressure_mb,precip_mm,humidity,cloud,feelslike_c,vis_km,uv,gust_mph,aqi_co,aqi_no2,aqi_o3,aqi_so2,aqi_pm2_5,aqi_pm10
+0,Saint-Malo,Bretagne,France,48.65,-2.02,Europe/Paris,2022-05-22 12:21,2022-05-22 12:15,15.0,Sunny,4.3,40,NE,1013.0,0.0,88,0,14.8,10.0,5.0,6.9,185.3000030517578,9.600000381469727,56.5,5.800000190734863,4.0,5.099999904632568
