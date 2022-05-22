@@ -96,6 +96,8 @@ def run_weather_etl(request):
         data_dict["aqi_pm10"].append(data["current"]["air_quality"]["pm10"])
 
     df_weather = pd.DataFrame(data_dict)
+    df_weather['localtime'] = pd.to_datetime(df_weather['localtime'])
+    df_weather['last_updated'] = pd.to_datetime(df_weather['last_updated'])
 
     # Validate
     if check_if_valid_data(df_weather, API_CITIES):

@@ -25,11 +25,11 @@
     },
     {
         "name": "localtime",
-        "type": "STRING"
+        "type": "TIMESTAMP"
     },
     {
         "name": "last_updated",
-        "type": "STRING"
+        "type": "TIMESTAMP"
     },
     {
         "name": "temp_c",
