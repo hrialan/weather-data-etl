@@ -105,4 +105,4 @@ def run_weather_etl(request):
     df_weather.to_gbq(BQ_TABLE, project_id=GCP_PROJECT, if_exists='append')
     
     print("Data loaded successfully")
-    return True
+    return "Success"
