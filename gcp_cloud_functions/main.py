@@ -21,10 +21,12 @@ def check_if_valid_data(df: pd.DataFrame, API_CITIES: list) -> bool:
     return True
 
 
-def run_weather_etl():
-  DATABASE_LOCATION = "sqlite:///weather_data.sqlite"
-  API_KEY           = "d79170c096d0407997175700222205"
-  API_CITIES        = ["Saint-Malo", "Paris", "Port-Navalo"]
+def run_weather_etl(request):
+    API_KEY           = "d79170c096d0407997175700222205"
+    API_CITIES        = ["Saint-Malo", "Paris", "Port-Navalo"]
+
+    GCP_PROJECT       = "sandbox-hrialan"
+    BQ_TABLE          = "weather_data.history_sync"
 
     # Create dict with final fields to be inserted
     data_dict = {
@@ -100,6 +102,7 @@ def run_weather_etl():
        print("Data valid, proceed to Load stage")
 
     # Load
-    df_weather.to_gbq("weather_data.history_sync", project_id="sandbox-hrialan", if_exists='append')
+    df_weather.to_gbq(BQ_TABLE, project_id=GCP_PROJECT, if_exists='append')
     
     print("Data loaded successfully")
+    return True
