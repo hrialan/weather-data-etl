@@ -1,8 +1,6 @@
 import pandas as pd
 import numpy as np
 import requests
-import sqlalchemy
-
 
 def check_if_valid_data(df: pd.DataFrame, API_CITIES: list) -> bool:
     # Check if dataframe is empty
@@ -24,9 +22,9 @@ def check_if_valid_data(df: pd.DataFrame, API_CITIES: list) -> bool:
 
 
 def run_weather_etl():
-    DATABASE_LOCATION = "sqlite:///weather_data.sqlite"
-    API_KEY           = "d79170c096d0407997175700222205"
-    API_CITIES        = ["Saint-Malo", "Paris", "Port-Navalo"]
+  DATABASE_LOCATION = "sqlite:///weather_data.sqlite"
+  API_KEY           = "d79170c096d0407997175700222205"
+  API_CITIES        = ["Saint-Malo", "Paris", "Port-Navalo"]
 
     # Create dict with final fields to be inserted
     data_dict = {
@@ -102,7 +100,6 @@ def run_weather_etl():
        print("Data valid, proceed to Load stage")
 
     # Load
-    engine = sqlalchemy.create_engine(DATABASE_LOCATION)
-    df_weather.to_sql("weather_data", engine, index=False, if_exists='append')
+    df_weather.to_gbq("weather_data.history_sync", project_id="sandbox-hrialan", if_exists='append')
     
     print("Data loaded successfully")

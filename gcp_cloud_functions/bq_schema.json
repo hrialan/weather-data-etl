@@ -1,0 +1,110 @@
+[
+    {
+      "name": "city",
+      "type": "STRING"
+    },
+    {
+      "name": "region",
+      "type": "STRING"
+    },
+    {
+      "name": "country",
+      "type": "STRING"
+    },
+    {
+        "name": "latitude",
+        "type": "FLOAT"
+    },
+    {
+        "name": "longitude",
+        "type": "FLOAT"
+    },
+    {
+        "name": "timezone",
+        "type": "STRING"
+    },
+    {
+        "name": "localtime",
+        "type": "STRING"
+    },
+    {
+        "name": "last_updated",
+        "type": "STRING"
+    },
+    {
+        "name": "temp_c",
+        "type": "FLOAT"
+    },
+    {
+        "name": "condition_text",
+        "type": "STRING"
+    },
+    {
+        "name": "wind_mph",
+        "type": "FLOAT"
+    },
+    {
+        "name": "wind_degree",
+        "type": "INTEGER"
+    },
+    {
+        "name": "wind_dir",
+        "type": "STRING"
+    },
+    {
+        "name": "pressure_mb",
+        "type": "FLOAT"
+    },
+    {
+        "name": "precip_mm",
+        "type": "FLOAT"
+    },
+    {
+        "name": "humidity",
+        "type": "INTEGER"
+    },
+    {
+        "name": "cloud",
+        "type": "INTEGER"
+    },
+    {
+        "name": "feelslike_c",
+        "type": "FLOAT"
+    },
+    {
+        "name": "vis_km",
+        "type": "FLOAT"
+    },
+    {
+        "name": "uv",
+        "type": "FLOAT"
+    },
+    {
+        "name": "gust_mph",
+        "type": "FLOAT"
+    },
+    {
+        "name": "aqi_co",
+        "type": "FLOAT"
+    },
+    {
+        "name": "aqi_no2",
+        "type": "FLOAT"
+    },
+    {
+        "name": "aqi_o3",
+        "type": "FLOAT"
+    },
+    {
+        "name": "aqi_so2",
+        "type": "FLOAT"
+    },
+    {
+        "name": "aqi_pm2_5",
+        "type": "FLOAT"
+    },
+    {
+        "name": "aqi_pm10",
+        "type": "FLOAT"
+    }
+]
