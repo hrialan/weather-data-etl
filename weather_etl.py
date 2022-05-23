@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 import requests
+import sqlalchemy
+
 
 def check_if_valid_data(df: pd.DataFrame, API_CITIES: list) -> bool:
     # Check if dataframe is empty
@@ -21,12 +23,10 @@ def check_if_valid_data(df: pd.DataFrame, API_CITIES: list) -> bool:
     return True
 
 
-def run_weather_etl(request):
+def run_weather_etl():
+    DATABASE_LOCATION = "sqlite:///weather_data.sqlite"
     API_KEY           = "d79170c096d0407997175700222205"
-    API_CITIES        = ["Saint-Malo", "Paris", "Port-Navalo", "Saint-Tropez", "Lille", "Marseilles", "Arcachon"]
-
-    GCP_PROJECT       = "sandbox-hrialan"
-    BQ_TABLE          = "weather_data.history_sync"
+    API_CITIES        = ["Saint-Malo", "Paris", "Port-Navalo"]
 
     # Create dict with final fields to be inserted
     data_dict = {
@@ -96,15 +96,14 @@ def run_weather_etl(request):
         data_dict["aqi_pm10"].append(data["current"]["air_quality"]["pm10"])
 
     df_weather = pd.DataFrame(data_dict)
-    df_weather['localtime'] = pd.to_datetime(df_weather['localtime'])
-    df_weather['last_updated'] = pd.to_datetime(df_weather['last_updated'])
 
     # Validate
     if check_if_valid_data(df_weather, API_CITIES):
        print("Data valid, proceed to Load stage")
 
     # Load
-    df_weather.to_gbq(BQ_TABLE, project_id=GCP_PROJECT, if_exists='append')
+    engine = sqlalchemy.create_engine(DATABASE_LOCATION)
+    df_weather.to_sql("weather_data", engine, index=False, if_exists='append')
     
     print("Data loaded successfully")
-    return "Success"
+
